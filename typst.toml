@@ -1,9 +1,13 @@
 [package]
 name = "keyle"
-version = "0.0.2"
+version = "0.1.0"
 authors = ["magicwenli <yxnian@outlook.com>"]
 license = "MIT"
 description = "This package provides a simple way to style keyboard shortcuts in your documentation."
 
-entrypoint = "src/lib.typ"
-keywords = ["kbd", "keyboard"]
+compiler = "0.11.1"
+entrypoint = "src/keyle.typ"
+keywords = ["kbd", "keyboard", "shortcut"]
+categories = ["utility", "fun"]
+
+exclude = ["*.pdf"]

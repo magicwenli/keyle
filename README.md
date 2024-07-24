@@ -1,38 +1,25 @@
 # keyle
 
-This package provides a simple way to style keyboard shortcuts in your
-documentation.
+This package provides a simple way to style keyboard shortcuts in your documentation.
 
-Inspired by [auth0/kbd](https://auth0.github.io/kbd/).
+It was inspired by [auth0/kbd](https://auth0.github.io/kbd/) and [dogezen/badgery](https://github.com/dogezen/badgery).
+
+Send them respect and love.
 
 ## Usage
 
-See more examples in the [example](./example) directory.
+Please see the [keyle.pdf](doc/keyle.pdf) for more documentation.
 
-### Basic
+`keyle` is imported using:
 
-``` typ
-#kbd("Ctrl")
-#kbd("Ctrl", "C")
-#kbd(com-key.shift, com-key.alt, "A")
+```typst
+#import "@preview/keyle:0.1.0"
 ```
 
-### Compact
+### Example
 
-``` typ
-#kbd("Ctrl", "A", compact: true)
-```
+![About](doc/keyle.png)
 
-### Custom Delimiter
+## License
 
-``` typ
-#kbd("Ctrl", "A", compact: true, delim: "-")
-#kbd(mac-key.command, "S", compact: true, delim: "")
-#kbd(mac-key.shift, mac-key.tab-left, mac-key.escape, compact: true, delim: "")
-```
-
-### Custom Style
-
-```typ
-#kbd("Ctrl", "A", style: kbd-style.deep-blue)
-```
+MIT
