@@ -3,6 +3,8 @@
 This package provides a simple way to style keyboard shortcuts in your
 documentation.
 
+Inspired by [auth0/kbd](https://auth0.github.io/kbd/).
+
 ## Usage
 
 See more examples in the [example](./example) directory.
