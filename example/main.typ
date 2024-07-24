@@ -1,10 +1,13 @@
-#import "../src/lib.typ": kbd, com-key, mac-key
+#import "../src/lib.typ": kbd, com-key, mac-key, kbd-style
 
 #set page(paper: "a5", margin: 1cm)
 
 = keyle
 
 This package provides a simple way to style keyboard shortcuts in your documentation.
+
+#kbd("a") #box(height: 1em, "+") #kbd("a")
+
 
 == Usage
 
@@ -41,3 +44,11 @@ This package provides a simple way to style keyboard shortcuts in your documenta
   kbd(mac-key.command, "S", compact: true, delim: ""),
   kbd(mac-key.shift, mac-key.tab-left, mac-key.escape, compact: true, delim: ""),
 )
+
+=== Custom Style
+
+```typ
+#kbd("Ctrl", "A", style: kbd-style.deep-blue)
+```
+
+#stack(dir: ttb, spacing: 5pt, kbd("Ctrl", "A", style: kbd-style.deep-blue))

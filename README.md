@@ -28,3 +28,9 @@ See more examples in the [example](./example) directory.
 #kbd(mac-key.command, "S", compact: true, delim: "")
 #kbd(mac-key.shift, mac-key.tab-left, mac-key.escape, compact: true, delim: "")
 ```
+
+### Custom Style
+
+```typ
+#kbd("Ctrl", "A", style: kbd-style.deep-blue)
+```
