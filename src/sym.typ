@@ -1,7 +1,6 @@
 // https://support.apple.com/en-hk/guide/mac-help/cpmh0011/mac
-#let _mac-key-font = ("Fira Code", "FiraCode", "FiraCode Nerd Font Mono", "Menlo", "Monaco", "Consolas", "Courier New", "monospace")
 
-#let _mac-key = (
+#let mac-key = (
   command: "⌘",
   shift: "⇧",
   option: "⌥",
@@ -22,11 +21,6 @@
   tab-left: "⇤",
 )
 
-#let mac-key = (:)
-#for (key, value) in _mac-key {
-  let mac-key = mac-key.insert(key, text(font: _mac-key-font, value))
-}
-
 #let biolinum-key = (
   Strg: "Strg",
   Alt: "Alt",
@@ -34,7 +28,7 @@
   Shift: "Shift",
   Tab: "Tab",
   Enter: "Enter",
-  CapsLock: "Capslock",
+  Capslock: "Capslock",
   Home: "Home",
   Del: "Del",
   Ins: "Ins",
