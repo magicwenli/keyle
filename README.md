@@ -8,7 +8,7 @@ Send them respect and love.
 
 ## Usage
 
-Please see the [keyle.pdf](doc/keyle.pdf) for more documentation.
+Please see the [keyle.pdf](https://github.com/magicwenli/keyle/blob/main/doc/keyle.pdf) for more documentation.
 
 `keyle` is imported using:
 
