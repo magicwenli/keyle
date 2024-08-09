@@ -41,7 +41,10 @@ Generate a keyboard renderer with #cmdref("config") function. Section @available
 #let kbd = keyle.config()
 #kbd("Ctrl","Shift","Alt","Del")
 
-#let kbd = keyle.config(theme: keyle.themes.biolinum, delim: keyle.biolinum-key.delim_plus)
+#let kbd = keyle.config(
+  theme: keyle.themes.biolinum,
+  delim: keyle.biolinum-key.delim_plus
+)
 #kbd("Ctrl","Shift","Alt","Del")
 ```)
 
@@ -87,7 +90,15 @@ You can create your own theme by defining a function that takes a string and ret
     stroke: rgb("#1c2024") + 0.3pt,
     radius: 0.35em,
     fill: rgb("#fcfcfd"),
-    text(fill: black, font: ("Segoe UI (Custom)","Roboto","Helvetica Neue","Open Sans (Custom)","sans-serif","Apple Color Emoji","Segoe UI Emoji"), content),
+    text(fill: black, font: (
+      "Segoe UI (Custom)",
+      "Roboto",
+      "Helvetica Neue",
+      "Open Sans (Custom)",
+      "sans-serif",
+      "Apple Color Emoji",
+      "Segoe UI Emoji"
+    ), content),
   ),
 )
 #let kbd = keyle.config(theme: radix_kdb)
@@ -110,10 +121,17 @@ You can create your own theme by defining a function that takes a string and ret
   "FiraCode",
   "FiraCode Nerd Font Mono",
 )
-#grid(columns: (2fr, 1fr, 2fr, 1fr), rows: 2em,align: horizon, ..keyle.mac-key.pairs().map(item => (
+#grid(
+  columns: (2fr, 1fr, 2fr, 1fr),
+  rows: 2em,
+  align: horizon,
+  ..keyle.mac-key.pairs().map(item => (
     raw("#keyle.mac-key." + item.at(0)),
-    kbd(text(font: mac-key-font, item.at(1))),
-  )).flatten())
+    kbd(
+      text(font: mac-key-font, item.at(1))
+    ),
+  )).flatten()
+)
 ```)
 
 == Linux Biolinum Keyboard Symbols
@@ -124,10 +142,15 @@ You can create your own theme by defining a function that takes a string and ret
 
 #example(```typst
 #let kbd = keyle.config(theme: keyle.themes.biolinum)
-#grid(columns: (5fr, 3fr, 5fr, 3fr), rows: 2em, align: horizon, ..keyle.biolinum-key.pairs().map(item => (
+#grid(
+  columns: (5fr, 3fr, 5fr, 3fr),
+  rows: 2em,
+  align: horizon,
+  ..keyle.biolinum-key.pairs().map(item => (
     raw("#keyle.biolinum-key." + item.at(0)),
     kbd(item.at(1)),
-  )).flatten())
+  )).flatten()
+)
 ```)
 
 = Available commands
