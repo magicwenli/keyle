@@ -4,8 +4,19 @@
 #let _outset = 2pt
 #let _radius = 3pt
 
+#let gen-examples(kbd) = [
+  #kbd("Ctrl", "Alt", "A") #h(2em)
+  #kbd("Ctrl", "Shift", "A", compact: true) #h(2em)
+  #kbd("Home") #kbd("End") #kbd("Ins") #kbd("Del")
+]
+
 /// Theme function to render keys in a standard style.
 ///
+/// #example(```typst
+/// #let kbd = keyle.config(theme: keyle.themes.standard)
+/// #keyle.gen-examples(kbd)
+/// ```)
+/// 
 /// - sym (string): The key symbol to render.
 /// -> content
 #let theme-func-stardard(sym) = box(
@@ -21,6 +32,11 @@
 
 /// Theme function to render keys in a deep blue style.
 ///
+/// #example(```typst
+/// #let kbd = keyle.config(theme: keyle.themes.deep-blue)
+/// #keyle.gen-examples(kbd)
+/// ```)
+/// 
 /// - sym (string): The key symbol to render.
 /// -> content
 #let theme-func-deep-blue(sym) = box(
@@ -36,6 +52,11 @@
 
 /// Theme function to render keys in a type writer style.
 ///
+/// #example(```typst
+/// #let kbd = keyle.config(theme: keyle.themes.type-writer)
+/// #keyle.gen-examples(kbd)
+/// ```)
+/// 
 /// - sym (string): The key symbol to render.
 /// -> content
 #let theme-func-type-writer(sym) = box(
@@ -46,6 +67,11 @@
 ///
 /// You need to have the font installed on your system.
 ///
+/// #example(```typst
+/// #let kbd = keyle.config(theme: keyle.themes.biolinum, delim: keyle.biolinum-key.delim_plus)
+/// #keyle.gen-examples(kbd)
+/// ```)
+/// 
 /// - sym (string): The key symbol to render.
 /// -> content
 #let theme-func-biolinum(sym) = text(
