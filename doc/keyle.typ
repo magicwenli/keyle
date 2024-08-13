@@ -102,7 +102,7 @@ You can create your own theme by defining a function that takes a string and ret
   ),
 )
 #let kbd = keyle.config(theme: radix_kdb)
-#kbd("⌘ D") #kbd("^⇧ F") 
+#kbd("⌘ D") #kbd("^ F") 
 ```)
 
 = Symbols

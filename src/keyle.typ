@@ -1,8 +1,6 @@
 #import "sym.typ": mac-key, biolinum-key
 
-#let _inset = 4pt
-#let _outset = 2pt
-#let _radius = 3pt
+#let shadow-times = 6
 
 #let gen-examples(kbd) = [
   #kbd("Ctrl", "Alt", "A") #h(2em)
@@ -16,19 +14,33 @@
 /// #let kbd = keyle.config(theme: keyle.themes.standard)
 /// #keyle.gen-examples(kbd)
 /// ```)
-/// 
+///
 /// - sym (string): The key symbol to render.
 /// -> content
-#let theme-func-stardard(sym) = box(
-  rect(
-    inset: (x: _inset),
-    outset: (top: _outset),
-    stroke: rgb("#555"),
-    radius: _radius,
-    fill: rgb("#eee"),
+#let theme-func-stardard(sym) = box({
+  let text-color = black
+  let bg-color = rgb("#eee")
+  let stroke-color = rgb("#555")
+
+  let cust-rect = rect.with(
+    inset: (x: 3pt),
+    outset: (top: 2pt),
+    stroke: stroke-color + 0.6pt,
+    radius: 2pt,
+    fill: bg-color,
+  )
+  let button = cust-rect(
     text(fill: black, sym),
-  ),
-)
+  )
+  let shadow = cust-rect(
+    fill: stroke-color,
+    text(fill: bg-color, sym),
+  )
+  for n in range(shadow-times) {
+    place(dx: 0.2pt * n, dy: 0.2pt * n, shadow)
+  }
+  button
+})
 
 /// Theme function to render keys in a deep blue style.
 ///
@@ -36,19 +48,30 @@
 /// #let kbd = keyle.config(theme: keyle.themes.deep-blue)
 /// #keyle.gen-examples(kbd)
 /// ```)
-/// 
+///
 /// - sym (string): The key symbol to render.
 /// -> content
-#let theme-func-deep-blue(sym) = box(
-  rect(
-    inset: (x: _inset),
-    outset: (top: _outset),
-    stroke: rgb("#2a6596"),
-    radius: _radius,
-    fill: rgb("#4682b4"),
+#let theme-func-deep-blue(sym) = box({
+  let text-color = white
+  let bg-color = rgb("#16456b")
+  let stroke-color = rgb("#4682b4")
+
+  let cust-rect = rect.with(
+    inset: (x: 3pt),
+    outset: (top: 2pt),
+    stroke: bg-color + 0.6pt,
+    radius: 2pt,
+    fill: stroke-color,
+  )
+  let button = cust-rect(
     smallcaps(text(fill: white, sym)),
-  ),
-)
+  )
+  let shadow = cust-rect(fill: bg-color, smallcaps(text(fill: bg-color, sym)))
+  for n in range(shadow-times) {
+    place(dx: 0.2pt * n, dy: 0.2pt * n, shadow)
+  }
+  button
+})
 
 /// Theme function to render keys in a type writer style.
 ///
@@ -56,12 +79,33 @@
 /// #let kbd = keyle.config(theme: keyle.themes.type-writer)
 /// #keyle.gen-examples(kbd)
 /// ```)
-/// 
+///
 /// - sym (string): The key symbol to render.
 /// -> content
-#let theme-func-type-writer(sym) = box(
-  rect(inset: (x: _inset), stroke: rgb("#2b2b2b"), radius: 50%, fill: rgb("#333"), smallcaps(text(fill: white, sym))),
-)
+#let theme-func-type-writer(sym) = box({
+  let text-color = white
+  let bg-color = rgb("#333")
+  let stroke-color = rgb("#2b2b2b")
+
+  let cust-rect = rect.with(
+    inset: (x: 3pt),
+    stroke: bg-color,
+    fill: stroke-color,
+    radius: 50%,
+  )
+
+  let button = cust-rect(
+    smallcaps(text(fill: white, sym)),
+  )
+  let shadow = cust-rect(
+    outset: 2.2pt,
+    fill: white,
+    stroke: stroke-color + 1.2pt,
+    smallcaps(text(fill: bg-color, sym)),
+  )
+  place(shadow)
+  button
+})
 
 /// Theme function to render keys in a Linux Biolinum Keyboard style.
 ///
@@ -71,7 +115,7 @@
 /// #let kbd = keyle.config(theme: keyle.themes.biolinum, delim: keyle.biolinum-key.delim_plus)
 /// #keyle.gen-examples(kbd)
 /// ```)
-/// 
+///
 /// - sym (string): The key symbol to render.
 /// -> content
 #let theme-func-biolinum(sym) = text(
