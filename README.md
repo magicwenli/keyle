@@ -1,8 +1,8 @@
 # keyle
 
 <p align="center">
-  <a href="https://github.com/magicwenli/keyle/blob/main/doc/keyle.pdf">
-    <img alt="Documentation" src="https://img.shields.io/website?down_message=offline&label=manual&up_color=007aff&up_message=online&url=https://github.com/magicwenli/keyle/blob/main/doc/keyle.pdf" />
+  <a href="https://raw.githubusercontent.com/magicwenli/keyle/main/doc/keyle.pdf">
+    <img alt="Documentation" src="https://img.shields.io/website?down_message=offline&label=manual&up_color=007aff&up_message=online&url=https://raw.githubusercontent.com/magicwenli/keyle/main/doc/keyle.pdf" />
   </a>
   <a href="https://github.com/magicwenli/keyle/blob/main/LICENSE">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-brightgreen">
@@ -20,7 +20,7 @@ Please see the [keyle.pdf](https://github.com/magicwenli/keyle/blob/main/doc/key
 `keyle` is imported using:
 
 ```typst
-#import "@preview/keyle:0.1.1"
+#import "@preview/keyle:0.1.2"
 ```
 
 ### Example
