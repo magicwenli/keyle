@@ -2,10 +2,14 @@
 
 #let shadow-times = 6
 
+/// Generate examples for the given keyboard rendering function.
+/// 
+/// - kbd (function): The keyboard rendering function.
+/// -> content
 #let gen-examples(kbd) = [
-  #kbd("Ctrl", "Alt", "A") #h(2em)
-  #kbd("Ctrl", "Shift", "A", compact: true) #h(2em)
-  #kbd("Home") #kbd("End") #kbd("Ins") #kbd("Del")
+#kbd("Ctrl", "A") #h(1em) #kbd("Alt", "P", compact: true)
+
+#kbd("Home") #kbd("End") #kbd("Ins") #kbd("Del")
 ]
 
 /// Theme function to render keys in a standard style.
@@ -24,7 +28,6 @@
 
   let cust-rect = rect.with(
     inset: (x: 3pt),
-    outset: (top: 2pt),
     stroke: stroke-color + 0.6pt,
     radius: 2pt,
     fill: bg-color,
@@ -58,7 +61,6 @@
 
   let cust-rect = rect.with(
     inset: (x: 3pt),
-    outset: (top: 2pt),
     stroke: bg-color + 0.6pt,
     radius: 2pt,
     fill: stroke-color,
@@ -88,7 +90,7 @@
   let stroke-color = rgb("#2b2b2b")
 
   let cust-rect = rect.with(
-    inset: (x: 3pt),
+    inset: (x: 2pt),
     stroke: bg-color,
     fill: stroke-color,
     radius: 50%,
@@ -103,8 +105,14 @@
     stroke: stroke-color + 1.2pt,
     smallcaps(text(fill: bg-color, sym)),
   )
-  place(shadow)
-  button
+  box(
+    inset: 2pt,
+    {
+      place(shadow)
+      button
+    },
+  )
+
 })
 
 /// Theme function to render keys in a Linux Biolinum Keyboard style.
@@ -150,7 +158,13 @@
       if delim == biolinum-key.delim_plus or delim == biolinum-key.delim_minus {
         keys.pos().map(k => [#theme(k)]).join(theme(delim))
       } else {
-        keys.pos().map(k => [#theme(k)]).join([ #box(height: 1.2em, delim) ])
+        context keys.pos().map(k => [#theme(k)]).join(
+          box(
+            height: measure(theme("A")).height,
+            inset: 2pt,
+            align(horizon, delim),
+          ),
+        )
       }
     }
   }

@@ -8,9 +8,10 @@
 #import "../src/keyle.typ"
 
 #let lib-name = package[keyle]
-
 #show: mantys.with(..toml("../typst.toml"), date: datetime.today(), examples-scope: (keyle: keyle))
+
 #show link: underline
+#set text(font:("Linux Libertine", "Liberation Serif"))
 
 // end of preamble
 
@@ -45,7 +46,7 @@ Generate a keyboard renderer with #cmdref("config") function. Section @available
   theme: keyle.themes.biolinum,
   delim: keyle.biolinum-key.delim_plus
 )
-#kbd("Ctrl","Shift","Alt","Del")
+#kbd("Ctrl", "Shift", "Alt", "Del")
 ```)
 
 There are `compact` and `delim` options to make the output more compact and change the delimiter between keys.
@@ -54,10 +55,10 @@ You can either use them in #cmdref("config") function or directly in generated `
 
 #example(```typst
 #let kbd = keyle.config(compact: true, delim: "-")
-#kbd("Ctrl","Shift","Alt","Del")
+#kbd("Ctrl", "Shift", "Alt", "Del")
 
 #let kbd = keyle.config()
-#kbd("Ctrl","Shift","Alt","Del", compact: true, delim: "-")
+#kbd("Ctrl", "Shift", "Alt", "Del", compact: true, delim: "-")
 ```)
 
 = Themes
@@ -91,13 +92,8 @@ You can create your own theme by defining a function that takes a string and ret
     radius: 0.35em,
     fill: rgb("#fcfcfd"),
     text(fill: black, font: (
-      "Segoe UI (Custom)",
       "Roboto",
       "Helvetica Neue",
-      "Open Sans (Custom)",
-      "sans-serif",
-      "Apple Color Emoji",
-      "Segoe UI Emoji"
     ), content),
   ),
 )
@@ -115,6 +111,7 @@ You can create your own theme by defining a function that takes a string and ret
 - #link("https://support.apple.com/en-hk/guide/mac-help/cpmh0011/mac")[Apple Mac Keyboard Symbols]
 
 #example(```typst
+#let mac-key = keyle.mac-key
 #let kbd = keyle.config(theme: keyle.themes.standard)
 #let mac-key-font = (
   "Fira Code",
@@ -125,8 +122,8 @@ You can create your own theme by defining a function that takes a string and ret
   columns: (2fr, 1fr, 2fr, 1fr),
   rows: 2em,
   align: horizon,
-  ..keyle.mac-key.pairs().map(item => (
-    raw("#keyle.mac-key." + item.at(0)),
+  ..mac-key.pairs().map(item => (
+    raw("#mac-key." + item.at(0)),
     kbd(
       text(font: mac-key-font, item.at(1))
     ),
@@ -141,13 +138,14 @@ You can create your own theme by defining a function that takes a string and ret
 - #link("https://libertine-fonts.org/")[Linux Biolinum Keyboard]
 
 #example(```typst
+#let biolinum-key = keyle.biolinum-key
 #let kbd = keyle.config(theme: keyle.themes.biolinum)
 #grid(
   columns: (5fr, 3fr, 5fr, 3fr),
   rows: 2em,
   align: horizon,
-  ..keyle.biolinum-key.pairs().map(item => (
-    raw("#keyle.biolinum-key." + item.at(0)),
+  ..biolinum-key.pairs().map(item => (
+    raw("#biolinum-key." + item.at(0)),
     kbd(item.at(1)),
   )).flatten()
 )
