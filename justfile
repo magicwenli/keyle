@@ -11,7 +11,7 @@ bump $VERSION $FORCE="":
     sed -i 's/keyle:.*"$/keyle:'$VERSION'"/g' doc/keyle.typ
     @just doc
     git add doc/keyle.pdf doc/keyle.typ README.md typst.toml
-    git commit -m 'Bump version v'$VERSION
-    git tag $FORCE v$VERSION -m 'version v'$VERSION
+    git commit -m 'bump: version '$VERSION
+    git tag $FORCE $VERSION -m 'version '$VERSION
     git push $FORCE
     git push $FORCE origin v$VERSION
