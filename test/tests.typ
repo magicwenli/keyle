@@ -3,7 +3,7 @@
 #import "../src/keyle.typ"
 
 #set document(date: none)
-#set page(margin: 0.5cm, width: 16cm, height: auto)
+#set page(margin: 0.5cm, width: auto, height: auto)
 
 #let example-scope = (keyle: keyle)
 #let frame(..args) = showybox(
@@ -15,7 +15,9 @@
   ),
   ..args,
 )
-#let example(source, vertical: false, title: []) = {
+
+/// Generate a keyboard renderer and code sources.
+#let example-with-source(source, vertical: false, title: []) = {
   let rendered = frame(align(eval(source.text, mode: "markup", scope: example-scope), horizon))
   let code = [#title #sourcecode(source, lang: "typ")]
   block(
@@ -45,14 +47,20 @@
   )
 }
 
+/// Generate a pure keyboard renderer.
+#let example(source, vertical: false, title: []) = {
+  let rendered = eval(source.text, mode: "markup", scope: example-scope)
+  rendered
+}
+
 #show raw.where(lang: "example"): text => {
   example(raw(text.text, lang: "typc"))
 }
 
 #example(
   ```tpy
-#let kbd = keyle.config()
-#kbd("Ctrl", "Shift", "K", delimiter: "-")
+  #let kbd = keyle.config()
+  #kbd("Ctrl", "Shift", "K", delimiter: "-")
   ```,
   title: [== Custom Delimiter],
 )
@@ -60,8 +68,8 @@
 
 #example(
   ```tpy
-#let kbd = keyle.config()
-#kbd("Ctrl", "Shift", "K", compact: true)
+  #let kbd = keyle.config()
+  #kbd("Ctrl", "Shift", "K", compact: true)
   ```,
   title: [== Compact Mode],
 )
@@ -69,8 +77,8 @@
 
 #example(
   ```tpy
-#let kbd = keyle.config(theme: keyle.themes.standard)
-#keyle.gen-examples(kbd)
+  #let kbd = keyle.config(theme: keyle.themes.standard)
+  #keyle.gen-examples(kbd)
   ```,
   title: [== Standard Theme],
 )
@@ -78,8 +86,8 @@
 
 #example(
   ```tpy
-#let kbd = keyle.config(theme: keyle.themes.deep-blue)
-#keyle.gen-examples(kbd)
+  #let kbd = keyle.config(theme: keyle.themes.deep-blue)
+  #keyle.gen-examples(kbd)
   ```,
   title: [== Deep Blue Theme],
 )
@@ -87,8 +95,8 @@
 
 #example(
   ```tpy
-#let kbd = keyle.config(theme: keyle.themes.type-writer)
-#keyle.gen-examples(kbd)
+  #let kbd = keyle.config(theme: keyle.themes.type-writer)
+  #keyle.gen-examples(kbd)
   ```,
   title: [== Type Writer Theme],
 )
@@ -96,8 +104,8 @@
 
 #example(
   ```tpy
-#let kbd = keyle.config(theme: keyle.themes.biolinum, delim: keyle.biolinum-key.delim_plus)
-#keyle.gen-examples(kbd)
+  #let kbd = keyle.config(theme: keyle.themes.biolinum, delim: keyle.biolinum-key.delim_plus)
+  #keyle.gen-examples(kbd)
   ```,
   title: [== Biolinum Theme],
 )
@@ -105,22 +113,22 @@
 
 #example(
   ```tpy
-// https://www.radix-ui.com/themes/playground#kbd
-#let radix_kdb(content) = box(
-  rect(
-    inset: (x: 0.5em),
-    outset: (y:0.05em),
-    stroke: rgb("#1c2024") + 0.3pt,
-    radius: 0.35em,
-    fill: rgb("#fcfcfd"),
-    text(fill: black, font: (
-      "Roboto",
-      "Helvetica Neue",
-    ), content),
-  ),
-)
-#let kbd = keyle.config(theme: radix_kdb)
-#keyle.gen-examples(kbd)
+  // https://www.radix-ui.com/themes/playground#kbd
+  #let radix_kdb(content) = box(
+    rect(
+      inset: (x: 0.5em),
+      outset: (y:0.05em),
+      stroke: rgb("#1c2024") + 0.3pt,
+      radius: 0.35em,
+      fill: rgb("#fcfcfd"),
+      text(fill: black, font: (
+        "Roboto",
+        "Helvetica Neue",
+      ), content),
+    ),
+  )
+  #let kbd = keyle.config(theme: radix_kdb)
+  #keyle.gen-examples(kbd)
   ```,
   title: [== Custom Theme],
 )
