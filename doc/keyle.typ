@@ -31,7 +31,7 @@ Send them respect!
 #lib-name is imported using
 
 #codesnippet[```typ
-    #import "@preview/keyle:0.1.0"
+    #import "@preview/keyle:0.2.0"
   ```]
 
 == Quick Start
