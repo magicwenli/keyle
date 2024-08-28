@@ -33,7 +33,7 @@ Please see the [keyle.pdf](https://github.com/magicwenli/keyle/blob/main/doc/key
 
 ```tpy
 #let kbd = keyle.config()
-#kbd("Ctrl", "Shift", "K", delimiter: "-")
+#kbd("Ctrl", "Shift", "K", delim: "-")
 ```
 ![Custom Delimiter](test/test-1.png)
 

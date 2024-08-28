@@ -60,7 +60,7 @@
 #example(
   ```tpy
   #let kbd = keyle.config()
-  #kbd("Ctrl", "Shift", "K", delimiter: "-")
+  #kbd("Ctrl", "Shift", "K", delim: "-")
   ```,
   title: [== Custom Delimiter],
 )
